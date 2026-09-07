@@ -175,3 +175,40 @@ footer {
 		display: block
 	}
 }
+
+/*Douglas' CSS*/
+
+/*FILTER  CONTROLS*/
+
+.filters {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 18px;
+	margin-top: 24px;
+	padding-top: 24px;
+	border-top: 1px solid #d8dee3;
+}
+
+
+.filter-control {
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+}
+
+
+.filter-control label {
+	font-weight: bold;
+	color: var(--brand-dark);
+	font-size: 14px;
+}
+
+
+.filter-control select {
+	width: 100%;
+	padding: 12px 13px;
+	border: 1px solid #acb8c1;
+	background: white;
+	font: inherit;
+	color: var(--dark);
+}

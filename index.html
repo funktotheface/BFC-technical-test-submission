@@ -38,7 +38,7 @@
                 </p>
                 <div class="filters">
 
-                    <div>
+                    <div class="filter-control">
                         <label for="level-filter">
                             Qualification level
                         </label>
@@ -51,7 +51,7 @@
                     </div>
 
 
-                    <div>
+                    <div class="filter-control">
                         <label for="type-filter">
                             Qualification type
                         </label>
@@ -64,7 +64,7 @@
                     </div>
 
 
-                    <div>
+                    <div class="filter-control">
                         <label for="subject-filter">
                             Subject
                         </label>
@@ -76,42 +76,44 @@
                         </select>
                     </div>
 
+                    <div class="filter-control">
+
+                        <label for="sort">
+                            Sort by
+                        </label>
+
+                        <select id="sort">
+
+                            <option value="title-asc">
+                                Course title A–Z
+                            </option>
+
+                            <option value="title-desc">
+                                Course title Z–A
+                            </option>
+
+                            <option value="level-asc">
+                                Level low to high
+                            </option>
+
+                            <option value="level-desc">
+                                Level high to low
+                            </option>
+
+                            <option value="date-asc">
+                                Start date earliest
+                            </option>
+
+                            <option value="date-desc">
+                                Start date latest
+                            </option>
+
+                        </select>
+
+                    </div>
+
                 </div>
-                <div class="sort-control">
 
-                    <label for="sort">
-                        Sort by
-                    </label>
-
-                    <select id="sort">
-
-                        <option value="title-asc">
-                            Course title A–Z
-                        </option>
-
-                        <option value="title-desc">
-                            Course title Z–A
-                        </option>
-
-                        <option value="level-asc">
-                            Level low to high
-                        </option>
-
-                        <option value="level-desc">
-                            Level high to low
-                        </option>
-
-                        <option value="date-asc">
-                            Start date earliest
-                        </option>
-
-                        <option value="date-desc">
-                            Start date latest
-                        </option>
-
-                    </select>
-
-                </div>
             </section>
             <div id="no-results" hidden>
 
