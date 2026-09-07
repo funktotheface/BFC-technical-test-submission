@@ -135,7 +135,7 @@ function sortCourses(courses) {
     switch (state.sort) {
         //a-z
         case 'title-asc':
-            sortedCourses sort.((a, b) =>
+            sortedCourses.sort.((a, b) =>
                 a.course_title.localCompare(b.course_title)
             );
 
