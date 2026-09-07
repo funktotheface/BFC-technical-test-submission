@@ -309,7 +309,7 @@ function renderResultsCounter(count) {
         `${count} ${word} found`;
 }
 
-//no results state message
+//display a message if no results are found
 
 function renderNoResultsState(count) {
 
@@ -320,4 +320,132 @@ function renderNoResultsState(count) {
     coursesContainer.hidden = noResults;
 
     paginationContainer.hidden = noResults;
+}
+
+//pagination system
+//rfesults should be divided into groups of ten
+
+function paginateCourses(courses) {
+
+    const startIndex =
+        (state.page - 1) * PAGE_SIZE;
+
+
+    const endIndex =
+        startIndex + PAGE_SIZE;
+
+
+    return courses.slice(
+        startIndex,
+        endIndex
+    );
+}
+
+
+//create the pagination button
+function createPaginationButton(
+    label,
+    targetPage,
+    disabled = false,
+    current = false
+) {
+
+    const button = document.createElement('button');
+
+    button.type = 'button';
+    button.className = 'pagination-button';
+
+    button.textContent = label;
+
+    button.disabled = disabled;
+
+
+    if (current) {
+
+        button.classList.add('is-current');
+
+        button.setAttribute(
+            'aria-current',
+            'page'
+        );
+    }
+
+    button.addEventListener('click', () => {
+
+        state.page = targetPage;
+
+        updateResults();
+
+
+        //return to the top of the results when user chages page
+        resultsCounter.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
+
+
+    return button;
+}
+
+//render pagination controls
+function renderPagination(totalResults) {
+
+    paginationContainer.innerHTML = '';
+
+
+    //calculate required pages, Math.ceil makes sure
+    //enough pages are created to maintain groupings of up to ten results
+    const totalPages =
+        Math.ceil(totalResults / PAGE_SIZE);
+
+
+    //no pagination controls required if results list is lower than 10
+    if (totalPages <= 1) {
+
+        paginationContainer.hidden = true;
+
+        return;
+    }
+
+
+    paginationContainer.hidden = false;
+
+
+    //previous button (disabled when on first page)
+    paginationContainer.appendChild(
+        createPaginationButton(
+            'Previous',
+            state.page - 1,
+            state.page === 1
+        )
+    );
+
+
+    //create a page button for each page required
+    for (
+        let page = 1;
+        page <= totalPages;
+        page++
+    ) {
+
+        paginationContainer.appendChild(
+            createPaginationButton(
+                String(page),
+                page,
+                false,
+                page === state.page
+            )
+        );
+    }
+
+
+    //create next button (disabled when on final page)
+    paginationContainer.appendChild(
+        createPaginationButton(
+            'Next',
+            state.page + 1,
+            state.page === totalPages
+        )
+    );
 }
