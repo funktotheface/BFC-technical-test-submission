@@ -525,3 +525,42 @@ searchButton.addEventListener(
     performSearch
 );
 
+//event handler for filters
+//filters update the relevant state value and resets pagination to first page
+
+//qualification level
+levelFilter.addEventListener(
+    'change',
+    event => {
+        state.level = event.target.value;
+        state.page = 1;
+
+        updateResults();
+    }
+);
+
+//qualification type
+typeFilter.addEventListener(
+    'change',
+    event => {
+        state.type = event.target.value;
+        state.page = 1;
+
+        updateResults();
+    }
+);
+
+//subject 
+
+subjectFilter.addEventListener(
+    'change',
+    event => {
+        state.subject = event.target.value;
+        state.page = 1;
+
+        updateResults();
+    }
+);
+
+
+
