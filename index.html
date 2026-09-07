@@ -30,11 +30,89 @@
             <section class="search-panel">
                 <h2>What would you like to study?</h2>
                 <div class="search-row"><input id="search" type="search"
-                        placeholder="Search by course name or keyword"><button class="btn">Search courses</button></div>
+                        placeholder="Search by course name or keyword"><button id="searchButton" class="btn">Search
+                        courses</button>
+                </div>
+                <div class="filters">
+
+                    <div>
+                        <label for="level-filter">
+                            Qualification level
+                        </label>
+
+                        <select id="level-filter">
+                            <option value="all">
+                                All levels
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <div>
+                        <label for="type-filter">
+                            Qualification type
+                        </label>
+
+                        <select id="type-filter">
+                            <option value="all">
+                                All types
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <div>
+                        <label for="subject-filter">
+                            Subject
+                        </label>
+
+                        <select id="subject-filter">
+                            <option value="all">
+                                All subjects
+                            </option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="sort-control">
+
+                    <label for="sort">
+                        Sort by
+                    </label>
+
+                    <select id="sort">
+
+                        <option value="title-asc">
+                            Course title A–Z
+                        </option>
+
+                        <option value="title-desc">
+                            Course title Z–A
+                        </option>
+
+                        <option value="level-asc">
+                            Level low to high
+                        </option>
+
+                        <option value="level-desc">
+                            Level high to low
+                        </option>
+
+                        <option value="date-asc">
+                            Start date earliest
+                        </option>
+
+                        <option value="date-desc">
+                            Start date latest
+                        </option>
+
+                    </select>
+
+                </div>
             </section>
-                <section>
-                    <div id="courses">loading courses...    </div>
-                </section>
+            <section>
+                <div id="courses">loading courses... </div>
+            </section>
         </div>
     </main>
     <footer>

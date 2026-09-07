@@ -2,7 +2,7 @@
 
 
 const PAGE_SIZE = 10;
-const allCourses = loadMockourses;
+const allCourses = loadMockCourses();
 
 //state is source of truth, search parameters are mapped to the state object.
 //this allows easy reliable access to the users desired search terms throughout the script
@@ -573,3 +573,9 @@ sortSelect.addEventListener(
         updateResults();
     }
 );
+
+//initial render
+//run  the application when page loads, this will present the first ten courses of the dataset
+//with default state
+
+updateResults();
