@@ -83,7 +83,7 @@ populateSelect(
 
 function matchesSearch(course, searchTerm)  {
     //trim input to mitigate spacing incosostencies
-    const term = searchTerm.trim()toLowerCase();
+    const term = searchTerm.trim().toLowerCase();
 
     //empty search term returns all courses
     if (term === '') {
