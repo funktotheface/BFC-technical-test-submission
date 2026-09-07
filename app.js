@@ -47,3 +47,34 @@ function populateSelect(selectElement, values, labelFormatter) {
         selectElement.appendChild(option);
     }
 }
+
+//get all unique options from the data set, we can use a set to get the data without duplicates
+const qualificationLevels = [
+    ...new Set(allCourses.map(course => course.qualification_level))
+].sort((a, b) => a - b);
+
+const qualificationTypes = [
+    ...new Set(allCourses.map(course => course.qualification_type))
+].sort((a, b) => a.localeCompare(b));
+
+const subjectAreas = [
+    ...new Set(allCourses.map(course => course.subject_area))
+].sort((a, b) => a.localeCompare(b));
+
+//now we can call our populateSelect function and pass through the target data and destination element
+populateSelect(
+    levelFilter,
+    qualificationLevels,
+    level => `Level ${level}`
+);
+
+populateSelect(
+    typeFilter,
+    qualificationTypes
+);
+
+populateSelect(
+    subjectFilter,
+    subjectAreas
+);
+
