@@ -135,7 +135,7 @@ function sortCourses(courses) {
     switch (state.sort) {
         //a-z
         case 'title-asc':
-            sortedCourses.sort.((a, b) =>
+            sortedCourses.sort((a, b) =>
                 a.course_title.localCompare(b.course_title)
             );
 
@@ -150,7 +150,7 @@ function sortCourses(courses) {
        //lvl asc    
         case 'level-asc':
             sortedCourses.sort((a, b) =>
-                a.qualification_level - b qualification_level
+                a.qualification_level - b.qualification_level
             );
 
             break;
