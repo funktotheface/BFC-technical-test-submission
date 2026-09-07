@@ -78,3 +78,25 @@ populateSelect(
     subjectAreas
 );
 
+//search function
+//check if current search term matches a course
+
+function matchesSearch(course, searchTerm)  {
+    //trim input to mitigate spacing incosostencies
+    const term = searchTerm.trim()toLowerCase();
+
+    //empty search term returns all courses
+    if (term === '') {
+        return true;
+    }
+
+    //standardise values while ensuring fallback empty string is available (incase future records are missing these fields)
+    const title = (course.course_title || '').toLowerCase();
+    const summary = (course.summary || '').toLowerCase();
+
+    return (
+        title.include(term) ||
+        summary.includes(term)
+    );
+}
+
