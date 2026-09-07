@@ -212,3 +212,63 @@ footer {
 	font: inherit;
 	color: var(--dark);
 }
+
+/*RESULTS AREA*/
+
+#results-counter {
+    margin: 32px 0 16px;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--brand-dark);
+}
+
+#courses {
+    display: grid;
+    gap: 20px;
+}
+
+/*COURSE CARDS*/
+
+.course-card {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+
+    padding: 28px 30px;
+
+    border-left: 5px solid var(--brand);
+
+    box-shadow: 0 3px 14px rgba(16, 43, 69, 0.08);
+}
+
+
+.course-card__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.course-card__meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+
+    font-size: 14px;
+    color: #56616a;
+}
+
+
+.course-badge {
+    display: inline-block;
+
+    padding: 4px 9px;
+
+    background: #e5f2fa;
+    color: var(--brand-dark);
+
+    font-weight: bold;
+}
