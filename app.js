@@ -136,14 +136,14 @@ function sortCourses(courses) {
         //a-z
         case 'title-asc':
             sortedCourses.sort((a, b) =>
-                a.course_title.localCompare(b.course_title)
+                a.course_title.localeCompare(b.course_title)
             );
 
             break;
         //z-a
         case 'title-desc':
             sortedCourses.sort((a, b) => 
-                b.course_title.localCompare(a.course_title)
+                b.course_title.localeCompare(a.course_title)
             );
 
             break;
@@ -191,7 +191,7 @@ function formatDate(dateString) {
         day: 'numeric',
         month: 'long',
         year: 'numeric'
-    }).formate(date);
+    }).format(date);
 }
 
 //safeguard escape HTML function
@@ -219,7 +219,7 @@ function renderCourseCards(courses) {
 
     for (const  course of courses) {
         //courses are rendered as a reusable <article> component
-        const courseElement = Document.createElement('article')
+        const courseElement = document.createElement('article')
 
         courseElement.className = 'course-card';
 
@@ -467,7 +467,7 @@ function updateResults() {
     );
 
     //combine filters
-    results = resuylts/filter(course =>matchesFilters(course)
+    results = results.filter(course =>matchesFilters(course)
     );
 
     //sort results
