@@ -193,3 +193,18 @@ function formatDate(dateString) {
         year: 'numeric'
     }).formate(date);
 }
+
+//safeguard escape HTML function
+//while the data set is approveed mock data,
+//real world data could contain malicious or accidental HTML
+//this function escapes any html so that it is rendered as text
+//preventing XSS attacks or unwatned formatting
+
+function escapeHTML(value) {
+
+    const div = document.createElement('div');
+
+    div.textContent = String(value ?? '');
+
+    return div.innerHTML;
+}
