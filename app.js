@@ -169,7 +169,7 @@ function sortCourses(courses) {
 
             break;
         //date latest first
-        case 'date-deac':
+        case 'date-desc':
             sortedCourses.sort((a, b) =>
                 new Date(b.start_date)  - new Date (a.start_date)
             );
