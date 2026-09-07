@@ -82,7 +82,7 @@ populateSelect(
 //check if current search term matches a course
 
 function matchesSearch(course, searchTerm)  {
-    //trim input to mitigate spacing incosostencies
+    //trim input to mitigate spacing inconsistencies
     const term = searchTerm.trim().toLowerCase();
 
     //empty search term returns all courses
@@ -90,7 +90,7 @@ function matchesSearch(course, searchTerm)  {
         return true;
     }
 
-    //standardise values while ensuring fallback empty string is available (incase future records are missing these fields)
+    //standardize values while ensuring fallback empty string is available (in case future records are missing these fields)
     const title = (course.course_title || '').toLowerCase();
     const summary = (course.summary || '').toLowerCase();
 
@@ -101,7 +101,7 @@ function matchesSearch(course, searchTerm)  {
 }
 
 //filter function
-//this will work similarly to the search funtion, but we're checking against selected paramters instead  of text content
+//this will work similarly to the search function, but we're checking against selected parameters instead  of text content
 
 function matchesFilters(course) {
 
@@ -127,7 +127,7 @@ function matchesFilters(course) {
 }
 
 //sorting results
-// we will push results into a new array to avoid mutating the the origional courses array
+// we will push results into a new array to avoid mutating the the original courses array
 
 function sortCourses(courses) {
     const sortedCourses = [...courses];
@@ -195,10 +195,10 @@ function formatDate(dateString) {
 }
 
 //safeguard escape HTML function
-//while the data set is approveed mock data,
+//while the data set is approved mock data,
 //real world data could contain malicious or accidental HTML
 //this function escapes any html so that it is rendered as text
-//preventing XSS attacks or unwatned formatting
+//preventing XSS attacks or unwanted formatting
 
 function escapeHTML(value) {
 
@@ -323,7 +323,7 @@ function renderNoResultsState(count) {
 }
 
 //pagination system
-//rfesults should be divided into groups of ten
+//results should be divided into groups of ten
 
 function paginateCourses(courses) {
 
@@ -377,7 +377,7 @@ function createPaginationButton(
         updateResults();
 
 
-        //return to the top of the results when user chages page
+        //return to the top of the results when user changes page
         resultsCounter.scrollIntoView({
             behavior: 'smooth',
             block: 'start'
@@ -457,7 +457,7 @@ function renderPagination(totalResults) {
 function updateResults() {
 
     //copy original data
-    //starting with fresh data ensures we never mutate the origional data set
+    //starting with fresh data ensures we never mutate the original data set
 
     let results = [...allCourses];
 
@@ -477,7 +477,7 @@ function updateResults() {
     renderResultsCounter(results.length);
 
     //check total returned pages against state page to make sure 
-    // pagination doesent display invalid page numbers
+    // pagination doesn't display invalid page numbers
 
     const totalPages =
         Math.ceil(results.length / PAGE_SIZE);
