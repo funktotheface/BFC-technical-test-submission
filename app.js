@@ -563,4 +563,13 @@ subjectFilter.addEventListener(
 );
 
 
+//sorting event listener
+sortSelect.addEventListener(
+    'change',
+    event => {
+        state.sort = event.target.value;
+        state.page = 1;
 
+        updateResults();
+    }
+);
