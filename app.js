@@ -35,7 +35,7 @@ const noResultsMessage = document.getElementById('no-results');
 //this will allow the application to work even  if new data is added in the future
 
 //this function will be the tool by which filter options are populated
-function populateSelect(selectElement, values, labelFormatter) {
+function populateSelect(selectElement, values, labelFormatter = value => value) {
 
     for (const value of values) {
 
@@ -95,8 +95,89 @@ function matchesSearch(course, searchTerm)  {
     const summary = (course.summary || '').toLowerCase();
 
     return (
-        title.include(term) ||
+        title.includes(term) ||
         summary.includes(term)
     );
 }
 
+//filter function
+//this will work similarly to the search funtion, but we're checking against selected paramters instead  of text content
+
+function matchesFilters(course) {
+
+    const matchesLevel =
+        state.level === 'all' ||
+        course.qualification_level === Number(state.level);
+
+
+    const matchesType =
+        state.type === 'all' ||
+        course.qualification_type === state.type;
+
+
+    const matchesSubject =
+        state.subject === 'all' ||
+        course.subject_area === state.subject;
+
+    return (
+        matchesLevel &&
+        matchesType &&
+        matchesSubject
+    );
+}
+
+//sorting results
+// we will push results into a new array to avoid mutating the the origional courses array
+
+function sortCourses(courses) {
+    const sortedCourses = [...courses];
+
+    switch (state.sort) {
+        //a-z
+        case 'title-asc':
+            sortedCourses sort.((a, b) =>
+                a.course_title.localCompare(b.course_title)
+            );
+
+            break;
+        //z-a
+        case 'title-desc':
+            sortedCourses.sort((a, b) => 
+                b.course_title.localCompare(a.course_title)
+            );
+
+            break;
+       //lvl asc    
+        case 'level-asc':
+            sortedCourses.sort((a, b) =>
+                a.qualification_level - b qualification_level
+            );
+
+            break;
+        //lvl desc 
+        case 'level-desc':
+            sortedCourses.sort((a, b) => 
+                b.qualification_level - a.qualification_level
+            );
+
+            break;
+        //date earliest first
+        case 'date-asc':
+            sortedCourses.sort((a, b) => 
+                new Date(a.start_date) - new Date(b.start_date)
+            );
+
+            break;
+        //date latest first
+        case 'date-deac':
+            sortedCourses.sort((a, b) =>
+                new Date(b.start_date)  - new Date (a.start_date)
+            );
+
+            break;
+    }
+
+    return sortedCourses;
+
+
+}
