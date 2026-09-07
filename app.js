@@ -503,3 +503,25 @@ function updateResults() {
     renderNoResultsState(results.length);
 }
 
+//event handler for search bar
+//trigger update results based on whatever is inside the search bar
+function performSearch() {
+    state.search = searchInput.value;
+
+    //make sure results always begin on page one bny overriding the state.page value
+    state.page = 1;
+    updateResults()
+}
+
+//live search as user types
+searchInput.addEventListener(
+    'input',
+    performSearch
+);
+
+//ensure search button is functional for users who expect traditional submit functionality
+searchButton.addEventListener(
+    'click',
+    performSearch
+);
+
