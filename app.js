@@ -475,5 +475,31 @@ function updateResults() {
 
     //update results count
     renderResultsCounter(results.length);
-    
+
+    //check total returned pages against state page to make sure 
+    // pagination doesent display invalid page numbers
+
+    const totalPages =
+        Math.ceil(results.length / PAGE_SIZE);
+
+
+    if (
+        totalPages > 0 &&
+        state.page > totalPages
+    ) {
+
+        state.page = totalPages;
+    }
+
+    //apply pagination to results
+    const visibleCourses =
+        paginateCourses(results);
+
+    //render results
+    renderCourseCards(visibleCourses);
+
+    renderPagination(results.length);
+
+    renderNoResultsState(results.length);
 }
+
