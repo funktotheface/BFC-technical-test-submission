@@ -296,3 +296,28 @@ function renderCourseCards(courses) {
         coursesContainer.appendChild(courseElement);
     }
 }
+
+//results counter
+//we will pass thee count value later in our main pipeline
+//this function detects the numerical value and adjusts the wording 'course' / 'courses' accordingly
+
+function renderResultsCounter(count) {
+
+    const word = count === 1 ? 'course' : 'courses';
+
+    resultsCounter.textContent =
+        `${count} ${word} found`;
+}
+
+//no results state message
+
+function renderNoResultsState(count) {
+
+    const noResults = count === 0;
+
+    noResultsMessage.hidden = !noResults;
+
+    coursesContainer.hidden = noResults;
+
+    paginationContainer.hidden = noResults;
+}
