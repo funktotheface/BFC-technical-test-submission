@@ -178,6 +178,18 @@ function sortCourses(courses) {
     }
 
     return sortedCourses;
+}
 
+//date formatting
+//course dates are currently in ISO, we should make them more readable for UK users
+//e.g. 2027-09-13 >>> 13 September 2027
 
+function formatDate(dateString) {
+    const date = new Date(dateString);
+
+    return new Intl.DateTimeFormat('en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+    }).formate(date);
 }
