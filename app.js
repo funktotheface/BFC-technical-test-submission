@@ -29,3 +29,21 @@ const coursesContainer = document.getElementById('courses');
 const resultsCounter = document.getElementById('results-counter');
 const paginationContainer = document.getElementById('pagination');
 const noResultsMessage = document.getElementById('no-results');
+
+//set filter options
+//rather than hard coding filter options, we will extract them from the data set 
+//this will allow the application to work even  if new data is added in the future
+
+//this function will be the tool by which filter options are populated
+function populateSelect(selectElement, values, labelFormatter) {
+
+    for (const value of values) {
+
+        const option = document.createElement('option');
+
+        option.value = value;
+        option.textContent = labelFormatter(value);
+
+        selectElement.appendChild(option);
+    }
+}
