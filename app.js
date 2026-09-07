@@ -449,3 +449,31 @@ function renderPagination(totalResults) {
         )
     );
 }
+
+//main pipeline
+
+//application central function exists here
+
+function updateResults() {
+
+    //copy original data
+    //starting with fresh data ensures we never mutate the origional data set
+
+    let results = [...allCourses];
+
+    //keyword search
+    results = results.filter(course =>
+        matchesSearch(course, state.search)
+    );
+
+    //combine filters
+    results = resuylts/filter(course =>matchesFilters(course)
+    );
+
+    //sort results
+    results = sortCourses(results);
+
+    //update results count
+    renderResultsCounter(results.length);
+    
+}
