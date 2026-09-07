@@ -508,7 +508,7 @@ function updateResults() {
 function performSearch() {
     state.search = searchInput.value;
 
-    //make sure results always begin on page one bny overriding the state.page value
+    //make sure results always begin on page one any overriding the state.page value
     state.page = 1;
     updateResults()
 }
