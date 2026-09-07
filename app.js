@@ -208,3 +208,91 @@ function escapeHTML(value) {
 
     return div.innerHTML;
 }
+
+//render the course cards
+//
+
+function renderCourseCards(courses) {
+
+    //clear results if present from previous render
+    coursesContainer.innerHTML = '';
+
+    for (const  course of courses) {
+        //courses are rendered as a reusable <article> component
+        const courseElement = Document.createElement('article')
+
+        courseElement.className = 'course-card';
+
+        courseElement.innerHTML = `
+
+            <div class="course-card__content">
+
+                <div class="course-card__meta">
+
+                    <span class="course-badge">
+                        ${escapeHTML(course.qualification_type)}
+                    </span>
+
+                    <span>
+                        Level ${escapeHTML(course.qualification_level)}
+                    </span>
+
+                </div>
+
+
+                <h2 class="course-card__title">
+                    ${escapeHTML(course.course_title)}
+                </h2>
+
+
+                <p class="course-card__subject">
+                    ${escapeHTML(course.subject_area)}
+                </p>
+
+
+                <p class="course-card__summary">
+                    ${escapeHTML(course.summary)}
+                </p>
+
+
+                <dl class="course-details">
+
+                    <div>
+                        <dt>Campus</dt>
+
+                        <dd>
+                            ${escapeHTML(course.campus)}
+                        </dd>
+                    </div>
+
+
+                    <div>
+                        <dt>Start date</dt>
+
+                        <dd>
+                            ${formatDate(course.start_date)}
+                        </dd>
+                    </div>
+
+                </dl>
+
+            </div>
+
+
+            <div class="course-card__action">
+
+                <button
+                    class="course-link"
+                    type="button"
+                    aria-label="View ${escapeHTML(course.course_title)} course"
+                >
+                    View course
+                </button>
+
+            </div>
+        `;
+
+
+        coursesContainer.appendChild(courseElement);
+    }
+}
